@@ -1,0 +1,4 @@
+#include "../../runtimes/php/Dockerfile"
+
+FROM runtime
+ENV GENERATOR=php

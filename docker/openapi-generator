@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+OPENAPI_GENERATOR_PATH=/opt/openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar
+OPENAPI_GENERATOR_COMMAND=generate
+
+# TODO: validate
+INPUT_SPEC=$1
+OUTPUT=$2
+
+# TODO:
+# --config
+# --engine
+/usr/bin/java -Xmx1024M \
+  -jar ${OPENAPI_GENERATOR_PATH} \
+       ${OPENAPI_GENERATOR_COMMAND} \
+   --generator-name "${GENERATOR}" \
+   --input-spec     "${INPUT_SPEC}" \
+   --output         "${OUTPUT}"

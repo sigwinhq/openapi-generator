@@ -1,0 +1,3 @@
+#include "../../Dockerfile"
+
+FROM generator AS runtime
