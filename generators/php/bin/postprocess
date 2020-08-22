@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# cleanup
+rm -f .php_cs .travis.yml git_push.sh
+
+# coding style
+/tools/composer normalize --no-check-lock --no-update-lock --no-cache
+/tools/php-cs-fixer fix --using-cache=false -v
+
+# static analysis
+/tools/phpstan analyse
+# /tools/psalm
+
+# unit tests
+vendor/bin/phpunit

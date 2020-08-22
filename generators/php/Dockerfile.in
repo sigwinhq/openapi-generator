@@ -2,3 +2,6 @@
 
 FROM runtime
 ENV GENERATOR=php
+COPY generators/php/bin/ /opt/openapi-generator/generator/bin
+COPY generators/php/overwrite/ /opt/openapi-generator/generator/overwrite
+COPY generators/php/templates/ /opt/openapi-generator/generator/templates

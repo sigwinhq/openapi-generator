@@ -1,3 +1,20 @@
+ARG PHP_QA_IMAGE=jakzal/phpqa:1.40-php7.4-alpine
+
 #include "../../Dockerfile"
 
+FROM ${PHP_QA_IMAGE} AS builder
+
 FROM generator AS runtime
+RUN apk add --no-cache \
+        php7-cli \
+        php7-dom \
+        php7-iconv \
+        php7-json \
+        php7-mbstring \
+        php7-openssl \
+        php7-phar \
+        php7-simplexml \
+        php7-tokenizer
+COPY --from=builder /tools /tools
+COPY --from=builder /usr/bin/composer /tools
+ENV COMPOSER_HOME=/tools/.composer
