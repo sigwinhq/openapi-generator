@@ -3,16 +3,18 @@
 OPENAPI_GENERATOR_PATH=/opt/openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar
 OPENAPI_GENERATOR_COMMAND=generate
 
-# TODO: validate
+# TODO: validate all variables
+# TODO: default config to .openapi-generator/config.json (if it exists)
 INPUT_SPEC=$1
 OUTPUT=$2
+CONFIG=$3
 
 # TODO:
-# --config
 # --engine
 /usr/bin/java -Xmx1024M \
   -jar ${OPENAPI_GENERATOR_PATH} \
        ${OPENAPI_GENERATOR_COMMAND} \
    --generator-name "${GENERATOR}" \
    --input-spec     "${INPUT_SPEC}" \
-   --output         "${OUTPUT}"
+   --output         "${OUTPUT}" \
+   --config         "${CONFIG}"
