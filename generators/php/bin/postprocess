@@ -3,9 +3,14 @@
 # cleanup
 rm -f .php_cs .travis.yml git_push.sh
 
+/usr/bin/jq --indent 4 'del( ."require-dev"."friendsofphp/php-cs-fixer" )' composer.json | /usr/bin/sponge composer.json
+
 # coding style
 /tools/composer normalize --no-check-lock --no-update-lock --no-cache
 /tools/php-cs-fixer fix --using-cache=false -v
+
+# install dependencies
+/tools/composer install
 
 # static analysis
 /tools/phpstan analyse
