@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
-OPENAPI_GENERATOR_PATH=/opt/openapi-generator/modules/openapi-generator-cli/target/openapi-generator-cli.jar
+OPENAPI_GENERATOR_ROOT=/opt/openapi-generator
+OPENAPI_GENERATOR_PATH=${OPENAPI_GENERATOR_ROOT}/modules/openapi-generator-cli/target/openapi-generator-cli.jar
 OPENAPI_GENERATOR_COMMAND=generate
+OPENAPI_GENERATOR_BIN=${OPENAPI_GENERATOR_ROOT}/generator/bin
+OPENAPI_GENERATOR_OVERWRITE=${OPENAPI_GENERATOR_ROOT}/generator/overwrite
+OPENAPI_GENERATOR_TEMPLATES=${OPENAPI_GENERATOR_ROOT}/generator/templates
 
 # TODO: validate all variables
 # TODO: default config to .openapi-generator/config.json (if it exists)
@@ -14,7 +18,14 @@ CONFIG=$3
 /usr/bin/java -Xmx1024M \
   -jar ${OPENAPI_GENERATOR_PATH} \
        ${OPENAPI_GENERATOR_COMMAND} \
+   --template-dir   "${OPENAPI_GENERATOR_TEMPLATES}" \
    --generator-name "${GENERATOR}" \
    --input-spec     "${INPUT_SPEC}" \
    --output         "${OUTPUT}" \
    --config         "${CONFIG}"
+
+# replace files fully
+[ -d "${OPENAPI_GENERATOR_OVERWRITE}" ] && cp -d -a "${OPENAPI_GENERATOR_OVERWRITE}/." "${OUTPUT}"
+
+# run custom post processing
+[ -x "${OPENAPI_GENERATOR_BIN}/postprocess" ] && ${OPENAPI_GENERATOR_BIN}/postprocess;
