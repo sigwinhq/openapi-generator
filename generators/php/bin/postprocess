@@ -9,6 +9,9 @@ rm -f .php_cs .travis.yml git_push.sh
 /tools/composer normalize --no-check-lock --no-update-lock --no-cache
 /tools/php-cs-fixer fix --using-cache=false -v
 
+# install dependencies
+/tools/composer install
+
 # static analysis
 /tools/phpstan analyse
 # /tools/psalm

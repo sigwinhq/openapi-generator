@@ -7,6 +7,7 @@ FROM ${PHP_QA_IMAGE} AS builder
 FROM generator AS runtime
 RUN apk add --no-cache \
         php7-cli \
+        php7-curl \
         php7-dom \
         php7-iconv \
         php7-json \
@@ -14,7 +15,9 @@ RUN apk add --no-cache \
         php7-openssl \
         php7-phar \
         php7-simplexml \
-        php7-tokenizer
+        php7-tokenizer \
+        php7-xml \
+        php7-xmlwriter
 COPY --from=builder /tools /tools
 COPY --from=builder /usr/bin/composer /tools
 ENV COMPOSER_HOME=/tools/.composer
