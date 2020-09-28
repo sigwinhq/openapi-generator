@@ -314,6 +314,7 @@ class ObjectSerializer
             }
         }
 
+        /** @psalm-suppress ParadoxicalCondition */
         if (in_array($class, [{{&primitives}}], true)) {
             settype($data, $class);
             return $data;
@@ -353,6 +354,8 @@ class ObjectSerializer
                     $class = $subclass;
                 }
             }
+
+            /** @var ModelInterface $instance */
             $instance = new $class();
             foreach ($instance::openAPITypes() as $property => $type) {
                 $propertySetter = $instance::setters()[$property];

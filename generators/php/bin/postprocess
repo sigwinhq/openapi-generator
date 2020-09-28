@@ -2,8 +2,10 @@
 
 set -e
 
+
 # cleanup
-rm -f .php_cs .travis.yml git_push.sh
+mv .php_cs .php_cs.dist
+rm -f .travis.yml git_push.sh
 
 /usr/bin/jq --indent 4 'del( ."require-dev"."friendsofphp/php-cs-fixer" )' composer.json | /usr/bin/sponge composer.json
 
@@ -17,7 +19,7 @@ rm -f .php_cs .travis.yml git_push.sh
 
 # static analysis
 /tools/phpstan analyse
-# /tools/psalm
+/tools/psalm
 
 # unit tests
 vendor/bin/phpunit
