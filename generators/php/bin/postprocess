@@ -6,6 +6,9 @@ set -e
 mv .php_cs .php_cs.dist
 rm -rf .travis.yml .openapi-generator .openapi-generator-ignore git_push.sh
 
+PHPQA_DOCKER_IMAGE=${PHPQA_DOCKER_IMAGE//-alpine/-php\$\{BUILD_ENV\}-alpine}
+sed -i "s~PHPQA_DOCKER_IMAGE=.*~PHPQA_DOCKER_IMAGE=${PHPQA_DOCKER_IMAGE}~" Makefile
+
 /usr/bin/jq --indent 4 'del( ."require-dev"."friendsofphp/php-cs-fixer" )' composer.json | /usr/bin/sponge composer.json
 
 # coding style
