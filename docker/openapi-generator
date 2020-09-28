@@ -13,6 +13,8 @@ INPUT_SPEC=$1
 OUTPUT=$2
 CONFIG=$3
 
+set -e
+
 # TODO:
 # --engine
 /usr/bin/java -Xmx1024M \

@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 # cleanup
 rm -f .php_cs .travis.yml git_push.sh
 
