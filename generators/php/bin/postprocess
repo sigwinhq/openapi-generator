@@ -17,11 +17,11 @@ sed -i "s~PHPQA_DOCKER_IMAGE=.*~PHPQA_DOCKER_IMAGE=${PHPQA_DOCKER_IMAGE}~" Makef
 /tools/php-cs-fixer fix --using-cache=false -v
 
 # install dependencies
-/tools/composer install
+# /tools/composer install
 
 # static analysis
-/tools/phpstan analyse
-/tools/psalm
+# /tools/phpstan analyse
+# /tools/psalm
 
 # unit tests
-vendor/bin/phpunit
+# vendor/bin/phpunit
