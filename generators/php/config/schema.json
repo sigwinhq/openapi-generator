@@ -1,0 +1,28 @@
+{
+    "type": "object",
+    "required": [
+        "invokerPackage",
+        "srcBasePath",
+        "gitUserId",
+        "gitRepoId"
+    ],
+    "properties": {
+        "invokerPackage": {
+            "type": "string",
+            "pattern": "^[0-9A-Za-z\\\\]+$"
+        },
+        "srcBasePath": {
+            "type": "string",
+            "pattern": "^[0-9A-Za-z/]+$"
+        },
+        "gitUserId": {
+            "type": "string",
+            "pattern": "^[0-9a-z_-]+$"
+        },
+        "gitRepoId": {
+            "type": "string",
+            "pattern": "^[0-9a-z_-]+$"
+        }
+    },
+    "additionalProperties": false
+}

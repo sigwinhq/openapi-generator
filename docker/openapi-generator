@@ -4,6 +4,7 @@ OPENAPI_GENERATOR_ROOT=/opt/openapi-generator
 OPENAPI_GENERATOR_PATH=${OPENAPI_GENERATOR_ROOT}/modules/openapi-generator-cli/target/openapi-generator-cli.jar
 OPENAPI_GENERATOR_COMMAND=generate
 OPENAPI_GENERATOR_BIN=${OPENAPI_GENERATOR_ROOT}/generator/bin
+OPENAPI_GENERATOR_CONFIG=${OPENAPI_GENERATOR_ROOT}/generator/config
 OPENAPI_GENERATOR_OVERWRITE=${OPENAPI_GENERATOR_ROOT}/generator/overwrite
 OPENAPI_GENERATOR_TEMPLATES=${OPENAPI_GENERATOR_ROOT}/generator/templates
 
@@ -23,6 +24,8 @@ then
 fi
 
 set -e
+
+[ -f "${OPENAPI_GENERATOR_CONFIG}/schema.json" ] && yajsv -q -s "${OPENAPI_GENERATOR_CONFIG}/schema.json" ${CONFIG}
 
 # TODO:
 # --engine
