@@ -1,6 +1,8 @@
 #include "../../runtimes/php/Dockerfile"
 
 FROM runtime
+ARG PHPQA_DOCKER_IMAGE
+ENV PHPQA_DOCKER_IMAGE=${PHPQA_DOCKER_IMAGE}
 ENV GENERATOR=php
 COPY generators/php/bin/ /opt/openapi-generator/generator/bin
 COPY generators/php/overwrite/ /opt/openapi-generator/generator/overwrite
