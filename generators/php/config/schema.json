@@ -1,12 +1,17 @@
 {
     "type": "object",
     "required": [
+        "packageName",
         "invokerPackage",
         "srcBasePath",
         "gitUserId",
         "gitRepoId"
     ],
     "properties": {
+        "packageName": {
+            "type": "string",
+            "pattern": "^[0-9A-Za-z\\\\]+$"
+        },
         "invokerPackage": {
             "type": "string",
             "pattern": "^[0-9A-Za-z\\\\]+$"
