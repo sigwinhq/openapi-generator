@@ -27,3 +27,6 @@ clean:
 
 Dockerfile:
 	cpp -o Dockerfile Dockerfile.in -P -nostdinc
+
+pull:
+	docker pull ${GENERATOR_DOCKER_IMAGE}
