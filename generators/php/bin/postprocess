@@ -9,7 +9,7 @@ rm -rf .travis.yml .openapi-generator .openapi-generator-ignore git_push.sh
 PHPQA_DOCKER_IMAGE=${PHPQA_DOCKER_IMAGE//-alpine/-php\$\{BUILD_ENV\}-alpine}
 sed -i "s~PHPQA_DOCKER_IMAGE=.*~PHPQA_DOCKER_IMAGE=${PHPQA_DOCKER_IMAGE}~" Makefile
 
-/usr/bin/jq --indent 4 ' ."license" = "MIT" | ."require"."php" = "^7.2" | del( ."require-dev"."friendsofphp/php-cs-fixer" ) | del( ."require"."ext-curl" )' composer.json | /usr/bin/sponge composer.json
+/usr/bin/jq --indent 4 ' ."license" = "MIT" | ."require"."php" = "^7.4 || ^8.0" | del( ."require-dev"."friendsofphp/php-cs-fixer" ) | del( ."require"."ext-curl" )' composer.json | /usr/bin/sponge composer.json
 
 # coding style
 /tools/composer normalize --no-check-lock --no-update-lock --no-cache

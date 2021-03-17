@@ -1,4 +1,4 @@
-ARG PHPQA_DOCKER_IMAGE=jakzal/phpqa:1.41-alpine
+ARG PHPQA_DOCKER_IMAGE=jakzal/phpqa:1.52-alpine
 
 #include "../../Dockerfile"
 
