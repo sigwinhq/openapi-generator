@@ -5,7 +5,11 @@
         "invokerPackage",
         "srcBasePath",
         "gitUserId",
-        "gitRepoId"
+        "gitRepoId",
+        "artifactUrl",
+        "licenseName",
+        "developerOrganization",
+        "developerOrganizationUrl"
     ],
     "properties": {
         "packageName": {
@@ -27,6 +31,19 @@
         "gitRepoId": {
             "type": "string",
             "pattern": "^[0-9a-z_-]+$"
+        },
+        "artifactUrl": {
+            "type": "string"
+        },
+        "licenseName": {
+            "type": "string",
+            "pattern": "^[0-9a-zA-Z_-]+$"
+        },
+        "developerOrganization": {
+            "type": "string"
+        },
+        "developerOrganizationUrl": {
+            "type": "string"
         }
     },
     "additionalProperties": false
