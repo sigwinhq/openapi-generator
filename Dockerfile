@@ -1,6 +1,6 @@
 ARG BASE_DOCKER_IMAGE
 ARG GENERATOR_DOCKER_IMAGE
-ARG YAJSV_VERSION=v1.3.0
+ARG YAJSV_VERSION=v1.4.1
 FROM ${GENERATOR_DOCKER_IMAGE} AS openapi-generator
 
 FROM ${BASE_DOCKER_IMAGE} AS downloader
@@ -15,7 +15,7 @@ RUN apk add --no-cache \
         bash \
         jq \
         moreutils \
-        openjdk8-jre-base
+        openjdk17-jre-headless
 COPY --from=openapi-generator /opt/openapi-generator /opt/openapi-generator
 COPY --from=downloader /yajsv /usr/local/bin/yajsv
 COPY docker/openapi-generator /usr/local/bin/
