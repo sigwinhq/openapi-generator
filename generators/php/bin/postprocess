@@ -9,7 +9,7 @@ mv test tests
 PHPQA_DOCKER_IMAGE=${PHPQA_DOCKER_IMAGE//-alpine/-php\$\{BUILD_ENV\}-alpine}
 sed -i "s~PHPQA_DOCKER_IMAGE=.*~PHPQA_DOCKER_IMAGE=${PHPQA_DOCKER_IMAGE}~" Makefile
 
-/usr/bin/jq --indent 4 '."require"."php" = "^8.2" | ."require-dev"."sigwin/infra" = "~1.5.0" | del( ."require-dev"."friendsofphp/php-cs-fixer" ) | del( ."require"."ext-curl" )' composer.json | /usr/bin/sponge composer.json
+/usr/bin/jq --indent 4 '."require"."php" = "^8.2" | ."require-dev"."sigwin/infra" = "~1.16.0" | ."require-dev"."phpunit/phpunit" = "^12.1.0" | del( ."require-dev"."friendsofphp/php-cs-fixer" ) | del( ."require"."ext-curl" )' composer.json | /usr/bin/sponge composer.json
 
 # coding style
 /tools/composer normalize --no-check-lock --no-update-lock --no-cache

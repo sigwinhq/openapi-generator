@@ -7,6 +7,7 @@ FROM ${PHPQA_DOCKER_IMAGE} AS builder
 FROM generator AS runtime
 RUN apk add --no-cache \
         php83-cli \
+        php83-ctype \
         php83-curl \
         php83-dom \
         php83-iconv \
