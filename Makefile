@@ -10,7 +10,7 @@ DOCKERFILE=Dockerfile
 endif
 
 MAKEFILE=../../Makefile
-BASE_DOCKER_IMAGE=alpine:3.18.3
+BASE_DOCKER_IMAGE=alpine:3.21.3
 GENERATOR_DOCKER_IMAGE=openapitools/openapi-generator-cli:latest
 
 SUBDIRS := $(wildcard generators/*/.)
