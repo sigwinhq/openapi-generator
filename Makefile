@@ -26,7 +26,7 @@ clean:
 	rm --force generators/*/Dockerfile runtimes/*/Dockerfile
 
 Dockerfile:
-	cpp -o Dockerfile Dockerfile.in -P -nostdinc
+	cpp -P -nostdinc Dockerfile.in Dockerfile
 
 pull:
 	docker pull ${GENERATOR_DOCKER_IMAGE}
